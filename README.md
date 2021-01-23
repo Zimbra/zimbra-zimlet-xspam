@@ -61,3 +61,5 @@ export default class MoreMenu extends Component {
 
 - https://files.zimbra.com/docs/soap_api/9.0.0/api-reference/index.html
 - https://files.zimbra.com/docs/soap_api/9.0.0/api-reference/zimbraMail/GetMsg.html
+- https://github.com/Zimbra/zm-api-js-client
+- https://github.com/Zimbra/zm-api-js-client/wiki/Steps-to-Add-New-API-Functionality-and-Expose-as-GraphQL
