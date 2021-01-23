@@ -12,6 +12,9 @@ This guides introduces the @zimbra/api-client a GraphQL client for making reques
 > ![](screenshots/x-spam-zimlet.png)
 *The X-Spam Zimlet.*
 
+> ![](screenshots/api-result.png)
+*Result of the zimbraBatchClient GetMsg request.*
+
 ## Using @zimbra/api-client
 
 This code snippet shows how to make a GetMsg SOAP request to get access to headers from the email:
