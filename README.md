@@ -4,7 +4,7 @@ The X-Spam Zimlet displays the X-Spam-Status and X-Spam-Score headers from email
 
 ## Zimbra API JS Client
 
-This guides introduces the @zimbra/api-client a GraphQL client for making requests against the Zimbra SOAP API.
+This guides introduces the @zimbra/api-client for making requests against the Zimbra SOAP API.
 
 
 ## Screenshots
@@ -35,7 +35,6 @@ export default class MoreMenu extends Component {
         super(props);
         this.zimletContext = props.children.context;
         const { zimbraBatchClient } = this.zimletContext;
-        console.log(this);
         zimbraBatchClient.jsonRequest({
             name: 'GetMsg',
             namespace: "urn:zimbraMail",
@@ -48,12 +47,15 @@ export default class MoreMenu extends Component {
                     console.log(response);
                     console.log(zimbraBatchClient.normalizeMessage(response.m[0]));
 
-                    window.parent.document.getElementById('XSpamZimlet').innerText = 'X-Spam-Status: ' + response.m[0]._attrs['X-Spam-Status'].replace(/\n|\r/g, "") + '\r\nX-Spam-Score: ' + response.m[0]._attrs['X-Spam-Score'].replace(/\n|\r/g, "");
+                    const header = 'X-Spam-Status: ' + this.props.emailData.id + " " + response.m[0]._attrs['X-Spam-Status'].replace(/\n|\r/g, "") + '\r\nX-Spam-Score: ' + response.m[0]._attrs['X-Spam-Score'].replace(/\n|\r/g, "");
+                    this.setState({ header: header });
                 } catch (err) { }
             });
     }
 
-    render() { return (<div class={style.XSpamZimlet} id="XSpamZimlet"></div>) }
+    render() {
+        return (<div class={style.XSpamZimlet} id="XSpamZimlet">{this.state.header}</div>)
+    }
 }
 ```
 
